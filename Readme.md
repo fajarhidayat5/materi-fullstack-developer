@@ -532,7 +532,80 @@ db.products.remove({"namaProduct": "Kembang gula"})
 
     WriteResult({ "nRemoved" : 1 })
 
-next 117
+## 117 - Swag Shop API: Project Creation
+
+Membuat folder baru pada Materi Training, kita sebut folder 
+
+    swag-shop-api
+
+Membuat file baru:
+
+    server.js
+
+Buka terminal dan arahkan ke folder swag-shop-api.
+
+    npm init
+    
+    npm install --save body-parser
+    
+Install express dan mongoose, mongoose adalah framework yang mengkoneksi app dengan mongodb database.
+
+    npm install --save express mongoose
+    
+Update file server.js
+
+    var express = require('express');
+    var app = express();
+    var bodyParser = require('body-parser');
+    var mongoose = require('mongoose');
+    var db = mongoose.connect('mongodb://localhost/swag-shop');
+
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: false}));
+
+    app.listen(3000, function () {
+        console.log("Swag Shop API running on port 3000...");
+    });
+    
+## 118 - Swag Shop API: Creating the Models
+
+Create new folder, model:
+
+    mkdir model
+    
+Create file baru model > product.js
+
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
+
+    var product = new Schema({
+        title: String,
+        price: Number,
+        likes: Number
+    });
+
+    module.exports = mongoose.model('Product', product);
+    
+Create file baru model > wishlist.js
+
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
+    var ObjectId = mongoose.Schema.Types.ObjectId;
+
+    var wishList = new Schema({
+        title: {type: String, default: "Cool Wish List"},
+        products: [{type: ObjectId, ref: 'Product'}]
+    });
+
+    module.exports = mongoose.module('WishList', wishList);
+    
+Import model ke dalam server.js
+
+    var Product = require('./model/product');
+    var WishList = require('./model/wishlist');
+
+
+
 
 
 

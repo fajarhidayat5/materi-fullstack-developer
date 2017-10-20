@@ -604,9 +604,76 @@ Import model ke dalam server.js
     var Product = require('./model/product');
     var WishList = require('./model/wishlist');
 
+## 119 Swag Shop API: Posting Products
 
+Membuat post function di server.js:
 
+    app.post('/product', function(req, res) {
+        var product = new Product();
+        product.title = req.body.title;
+        product.price = req.body.price;
+        //product.likes = 0;
+        product.save(function(err, savedproduct) {
+            if (err) {
+                res.status(500).send({err: "Could not save"})
+            } else {
+                res.send(savedProduct);
+            }
+        }) 
+    });
 
+Untuk product.likes refactor ke product.js
+
+    var product = new Schema({
+        title: String,
+        price: Number,
+    --> likes: {type: Number, default: 0}
+    }); 
+
+Coba di Postman, post products baru.            
+
+Test di mongo, apakah data sudah masuk.
+
+    show dbs
+    use swag-shop
+    show collections
+    db.products.find()
+
+Done
+
+## 120 - Swag Shop API: Fetching Products
+
+Membuat get function request:
+
+    app.get('/product', function(req, res) {
+        Product.find({}, function(err, products) {
+            if (err) {
+                res.status(500).send({error: "Could not fetch products"});
+            } else {
+                res.send(products);
+            }
+        })
+    });
+
+Coba di Postman
+Masukkan products baru dengan post.
+Kemudian lakukan Get request, status 200 ?
+
+Selanjutnya buka mongo db
+
+    mongo
+    show dbs
+    use swag-shop
+    show collections
+    db.products.find().pretty()
+
+## 121 - Exercise: Extending API
+
+## 122 - Swag Shop API: Populating Data
+
+Membuat Post request untuk wishlist
+
+122 not finish
 
 
 

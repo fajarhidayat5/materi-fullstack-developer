@@ -49,10 +49,14 @@ app.post('/wishlist', function(req, res) {
 });
 
 app.get('/wishlist', function(req, res) {
-    WishList.find({}, function(err, wishLists) {
-        res.send(wishLists);
-    })
-})
+    WishList.find({}).populate({path: 'products', model: 'Product'}).exec(function(err, wishLists) {
+        if (err) {
+            res.status(500).send({error: 'Could not fetch wishlists'});
+        } else {
+            res.status(200).send(wishLists);
+        }
+    })  
+});
 
 // Menambahkan product ke wish list
 app.put('/wishlist/product/add', function(req, res) {
@@ -60,12 +64,12 @@ app.put('/wishlist/product/add', function(req, res) {
         if (err) {
             res.status(500).send({error: 'Can not add item to wishlist'})
         } else {
-            WishList.update({_id:request.body.wishListId}, {$addToSet: {products: product._id}}, 
+            WishList.update({_id:req.body.wishListId}, {$addToSet: {products: product._id}}, 
                 function(err, wishList) {
                     if (err) {
                         res.status(500).send({error: 'Can not add item to wishlist'});
                     } else {
-                        res.send("Successfully added to wishList");
+                        res.send(wishList);
                     }
                 }
             )

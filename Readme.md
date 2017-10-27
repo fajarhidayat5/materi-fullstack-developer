@@ -671,9 +671,137 @@ Selanjutnya buka mongo db
 
 ## 122 - Swag Shop API: Populating Data
 
-Membuat Post request untuk wishlist
+### Membuat Post request untuk wishlist
 
-122 not finish
+    app.post('/wishlist', function(req, res) {
+        var wishList = new WishList();
+        wishList.title = req.body.title;
+        
+        wishList.save(function(err, newWishList) {
+            if (err) {
+                res.status(500).send({error: 'Could not create wishlist'})
+            } else {
+                res.send(newWishList);
+            }
+        });
+    })
+
+Test dengan Postman:
+
+    Pilih POST method
+    
+    localhost/wishlist -> ketik
+    
+    body -> tab
+    
+    raw -> type
+    
+    json -> format
+
+    {
+        "title": "Dyo list of game" -> tulis data yg akan di post/create
+    }
+
+    Send! -> tombol
+
+Apabila sukses (200) akan muncul (contoh):
+
+    {
+        "_id": "xxxxxxxxx",
+        "products": [],
+        "title": "Dyo list of game"
+    }
+
+### Membuat method GET untuk wishlist:
+
+    app.get("/wishlist", function(req, res) {
+        WishList.find({}, function(err, wishlists) {
+            if (err) {
+                res.status(500).send({error: 'Could not fetch wishlists'});
+            } else {
+                res.send(wislists);
+            }
+        });
+    });
+
+Coba di Postman:
+
+    Pilih method GET
+    
+    localhost:3000/wishlist
+    
+    Send
+    
+Bila tidak ada error maka akan muncul data yang tadi diatas:
+
+    {
+        "_id": "xxxxxxxxx",
+        "products": [],
+        "title": "Dyo list of game"
+    }
+
+Nampak product list (array) masih kosong karena kita belum memasukkan product ke dalam wishlist.
+
+Membuat method PUT untuk mengupdate wishlist dengan memasukkan product ke dalam model wishlist.
+
+    app.put('/wishlist/product/add', function(req, res) {
+        Product.findOne({_id: req.body.productId}, function(err, product) {
+            if (error) {
+                res.status(500).send({error: 'Could not add item to wishlist'});
+            } else {
+                WishList.update({_id: req.body.wishListId}, {$addToSet: {products: product._id}}, function(err, wishList) {
+                    if (err) {
+                        res.status(500).send({error: 'Could not add item to wishlist'});
+                    } else {
+                        res.send(wishList);
+                    }
+                })
+            }
+        });
+    })
+
+Coba Test
+
+    Copy salah satu product id
+    
+    ke Postman
+    
+    Method PUT
+    
+    localhost:3000/wishlist/product/add
+    
+    Pilih body > raw > json
+    
+    {
+        "productId": "xxxxxxxx",
+        "wishlistId": "yyyyyyyy"
+    }
+    
+    Klik send
+    
+Bila sukses akan muncul wishlist dengan product id:
+
+    "_id" : ObjectId("59e857fda97de30993fb0700"),
+    "products" : [
+            ObjectId("59e823da18aa7405ab8c7670")
+    ]
+    
+    
+## React
+
+Install React Globally di sistem kita :
+
+    npm install -g create-react-app
+
+Install React Local Project :
+
+    create-react-app namaApp
+
+
+
+
+
+
 
 
 

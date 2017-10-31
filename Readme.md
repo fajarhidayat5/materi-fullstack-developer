@@ -789,6 +789,8 @@ Bila sukses akan muncul wishlist dengan product id:
     
 ## React
 
+v.123
+
 Install React Globally di sistem kita :
 
     npm install -g create-react-app
@@ -796,6 +798,50 @@ Install React Globally di sistem kita :
 Install React Local Project :
 
     create-react-app namaApp
+
+    cd namaApp
+
+Jalankan aplikasi :
+
+    npm start
+
+### Install Twitter Bootstrap 4
+
+v.124
+
+Download
+
+Taruh di public folder
+
+Buat folder baru di public folder :
+
+    css
+    js
+
+Masukan boostrap.min.js ke folder js dan bootstrap.min.css ke folder css
+
+Download juga jQuery
+
+    jQuery
+
+dan Tether --> tether.io
+
+    tether.min.js
+    
+Referensikan di index.html
+
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.min.css">
+    <script src="%PUBLIC_URL%/js/jquery-3.2.0.min.js"></script>
+    <script src="%PUBLIC_URL%/js/tether.min.js"></script>
+    <script src="%PUBLIC_URL%/js/bootstrap.min.js"></script>
+    
+
+Atau anda bisa menggunakan CDN, [disini] CDN Bootstrap (http://getbootstrap.com/docs/4.0/getting-started/download/)
+
+Instal React Development Tools untuk Chrome
+
+
+
 
 
 

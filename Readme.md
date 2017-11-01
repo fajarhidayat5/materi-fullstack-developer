@@ -971,7 +971,7 @@ Menjadi sbb :
     import './App.css';
     import HttpService from './services/http-service';
     
-    const http: new HttpService();
+    const http = new HttpService();
 
     class App extends Component {
     

@@ -844,6 +844,8 @@ Instal React Development Tools untuk Chrome
 
 v. 125
 
+Pada folder **swag-shop-api**
+
 Start mongodb
 
     mongod
@@ -874,9 +876,141 @@ Lihat Semua data pada collections :
 
     db.products.find().pretty()
 
+Buka lagi folder **swag-shop-web**
+
+Kemudian jalankan servernya :
+
+    npm start
+    
+Karena port 3000 sudah digunakan oleh swag-shop-api, maka swag-shop-web dialihkan ke port 3001.
+
 ### Create http Service
 
 V. 126
+
+Pilihan :
+
+    Pada folder src buat folder baru app pindahkan file App.css, App.js, App.test.js.
+
+Buat folder baru pada src :
+
+    services
+    
+Buat file baru di dalam folder services :
+
+    http-service.js
+    
+pada file http-service.js akan kita buat function yang akan berkomunikasi dengan API.
+    
+Jalankan server swag-shop-web
+
+    npm start
+    
+Sebelumnya jalankan dulu database mongoDB **swag-shop-api** masing2 di terminal baru :
+
+    mogod
+    mongo
+    
+Buka Postman, pastikan API dari **swag-shop-api** berjalan :
+
+    localhost:3000/product
+    
+Install **whatwg-fetch** :
+
+    npm install --save whatwg-fetch
+    
+Baca lengakap whatwg di [https://www.npmjs.com/package/whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch).
+
+Pada file http-service.js tulis kode sbb :
+
+    import 'whatwg-fetch';
+    
+    class HttpService {
+        getProducts = () {
+            fetch('http://localhost:3004/product')
+            .then(response => {
+                console.log(response.json());
+            })
+        }
+    }
+
+    export default HttpService;
+    
+Kemudian pada file App.js import HttpService.js ini
+
+    import HttpService from './services/http-service';
+    
+Update file App.js dari sbb :
+
+    import React, { Component } from 'react';
+    import logo from './logo.svg';
+    import './App.css';
+
+    class App extends Component {
+      render() {
+        return (
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Welcome to The Shop</h1>
+            </header>
+            <p className="App-intro">
+              To get started, edit <code>src/App.js</code> and save to reload.
+            </p>
+          </div>
+        );
+      }
+    }
+
+    export default App;
+
+Menjadi sbb :
+
+    import React, { Component } from 'react';
+    import logo from './logo.svg';
+    import './App.css';
+    import HttpService from './services/http-service';
+    
+    const http: new HttpService();
+
+    class App extends Component {
+    
+    .........................   
+    constructor(props) {
+        super(props);
+        http.getProducts();
+    }
+    .........................
+    
+    render() {
+        return (
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Welcome to The Shop</h1>
+            </header>
+            <p className="App-intro">
+              To get started, edit <code>src/App.js</code> and save to reload.
+            </p>
+          </div>
+        );
+      }
+    }
+
+    export default App;
+
+Kemudian cek console pada browser, pastikan data muncul di console
+
+### Promise dengan ES6 dan React
+
+v. 126
+
+
+
+
+    
+
+
 
 
 

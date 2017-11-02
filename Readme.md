@@ -1001,6 +1001,22 @@ Menjadi sbb :
 
 Kemudian cek console pada browser, pastikan data muncul di console
 
+> **Bugs!** No 'Access-Control-Allow-Origin' ...
+
+> **Solusi** Instal Cors 
+
+    npm install cors
+
+    #Usage
+    var cors = require('cors');
+
+    app.use(cors({origin: '*'}));
+
+Server akan runing kembali dan merefresh localhost:3001. done!    
+ 
+
+
+
 ### Promise dengan ES6 dan React
 
 v. 126

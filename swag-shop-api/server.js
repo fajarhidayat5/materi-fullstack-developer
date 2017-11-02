@@ -3,12 +3,13 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/swag-shop');
-
+var cors = require('cors');
 var Product = require('./model/product');
 var WishList = require('./model/wishlist');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors({origin: '*'}));
 
 app.post('/product', function(req, res) {
     var product = new Product();

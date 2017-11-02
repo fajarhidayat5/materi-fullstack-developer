@@ -926,8 +926,8 @@ Pada file http-service.js tulis kode sbb :
     import 'whatwg-fetch';
     
     class HttpService {
-        getProducts = () {
-            fetch('http://localhost:3004/product')
+        getProducts = () => {
+            fetch('http://localhost:3000/product')
             .then(response => {
                 console.log(response.json());
             })
@@ -940,29 +940,7 @@ Kemudian pada file App.js import HttpService.js ini
 
     import HttpService from './services/http-service';
     
-Update file App.js dari sbb :
-
-    import React, { Component } from 'react';
-    import logo from './logo.svg';
-    import './App.css';
-
-    class App extends Component {
-      render() {
-        return (
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to The Shop</h1>
-            </header>
-            <p className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
-          </div>
-        );
-      }
-    }
-
-    export default App;
+Update file App.js 
 
 Menjadi sbb :
 
@@ -1014,15 +992,47 @@ Kemudian cek console pada browser, pastikan data muncul di console
 
 Server akan runing kembali dan merefresh localhost:3001. done!    
  
-
-
-
 ### Promise dengan ES6 dan React
 
-v. 126
+v. 127
 
+Refactor file 
 
+http-service.js
 
+    class HttpService {
+        getProducts = () => {
+
+            var promise = new Promise((resolve, reject) => {
+                fetch('http://localhost:3000/product')
+                .then(response => {
+                    resolve(response.json());
+                })
+            });
+
+            return promise;
+        }
+    }
+
+App.js
+
+    class App extends Component {
+		
+	constructor(props) {
+      super(props);
+      // bind function.
+      this.loadData = this.loadData.bind(this);
+      // and call the function.
+      this.loadData();
+    }
+    
+    loadData = () => {
+        http.getProducts().then(products => {
+        console.log(products);
+        }, err => {
+
+        });
+    }
 
     
 

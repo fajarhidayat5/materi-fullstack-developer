@@ -1034,11 +1034,68 @@ App.js
         });
     }
 
-    
+### Component in React and Website Products
 
+v.128
 
+Membuat folder baru src > **product**, 
+Membuat file baru product > **product.js**,
+Membuat file baru product > **product.css**
 
+Update product.js
 
+    import React, {Component} from 'react';
+    import './product.css';
+
+    class Product extends Component {
+        render() {
+            return (
+                <div className="card">
+                    <img className="card-img-top" />
+                    <div className="card-block">
+                        <h4 className="card-title"></h4>
+                        <p className="card-text">Price: $</p>
+                        <a href="#" className="btn btn-primary">Add to Wishlist</a>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    export default Product;
+
+Pada file App.js
+
+    import Product from './product/product';
+
+Update render sbb:
+
+    render() {
+        return (
+        <div className="App">
+            <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+                <h1 className="App-title">Welcome to The Shop</h1>
+            </header>
+            <div className="App-main">
+                <Product />
+            </div>
+        </div>
+        );
+    }
+
+Keterangan kode :
+
+* Import Product
+* Tambahkan Component Tag <Product />    
+
+Jalankan server:
+
+    npm start
+
+Buka browser localhost:3000
+
+![fullstack](http://res.cloudinary.com/medio/image/upload/c_scale,h_330,w_700/v1509680962/Fullstack%20Training/Screen_Shot_2017-11-03_at_10.45.29_AM.png)
 
 
 

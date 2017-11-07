@@ -1150,3 +1150,13 @@ Update App.css
     .App-main {
         padding-top: 35px;
     }
+
+# 130 State in React
+
+Pertama kita harus menginisial default state :
+
+    this.state = {products: []}
+
+State awal adalah products dengan empty array.
+
+    

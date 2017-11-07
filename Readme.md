@@ -1098,13 +1098,55 @@ Buka browser localhost:3000
 ![fullstack](http://res.cloudinary.com/medio/image/upload/c_scale,h_330,w_700/v1509680962/Fullstack%20Training/Screen_Shot_2017-11-03_at_10.45.29_AM.png)
 
 
+# 129 Props in React
 
+Update App.js dengan menambahkan props :
 
+price, title dan imgUrl
 
+    <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
 
+Menambahkan div row dan membuat 3 copy product :
 
+    <div className="row">
+        <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
+        <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
+        <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
+    </div>
 
+Update product.js sbb :
 
+Tambahkan class **product** pada card,
+Tambahkan props.imgUrl, props.title, props.price.
 
+    class Product extends Component {
+        render() {
+            return (
+                <div className="card product">
+                    <img className="card-img-top" src={this.props.imgUrl} alt="Product" />
+                    <div className="card-block">
+                        <h4 className="card-title">{this.props.title}</h4>
+                        <p className="card-text">Price: {this.props.price}</p>
+                        <a href="#" className="btn btn-primary">Add to Wishlist</a>
+                    </div>
+                </div>
+            );
+        }
+    }
 
+Update product.css
 
+    .product {
+        width: 20rem;
+        padding: 20px;
+    }
+
+    .product img {
+        max-height: 20rem;
+    }
+
+Update App.css
+
+    .App-main {
+        padding-top: 35px;
+    }

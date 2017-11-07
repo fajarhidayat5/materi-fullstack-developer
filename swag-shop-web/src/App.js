@@ -31,10 +31,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to The Shop</h1>
         </header>
-        <div className="App-main">
-          <Product />
+        <div className="container App-main">
+          <div className="row">
+            <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
+            <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
+            <Product className="col-sm-4" price = "$4.20" title="Cool Toy Gun" imgUrl = "https://images-na.ssl-images-amazon.com/images/I/4109Mv-s-1L._SL500_AC_SS350_.jpg" />
+          </div>    
         </div>
-
       </div>
     );
   }

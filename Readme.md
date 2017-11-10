@@ -1151,12 +1151,153 @@ Update App.css
         padding-top: 35px;
     }
 
-# 130 State in React
+## 130 State in React
 
 Pertama kita harus menginisial default state :
 
     this.state = {products: []}
 
-State awal adalah products dengan empty array.
+*State awal adalah products dengan empty array.
+
+Membuat productList function :
+
+    productList = () => {
+        const list = this.state.products.map((product) = 
+            <div className="col-sm-4" key={product._id} >
+                <product title={product.title} price={product.price} imgUrl={product.imgUrl} />
+            </div>
+        )
+
+        return(list);
+    }
+
+Dan update render nya:
+
+    render() {
+        return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1 className="App-title">Welcome to The Shop</h1>
+            </header>
+            <div className="container App-main">
+                <div className="row">
+                    {this.productList()}
+                </div>    
+            </div>
+        </div>
+        );
+    }
+
+Bind productList :
+
+    this.productList = this.productList.bind(this);
+
+Update load data :
+
+    loadData = () => {
+        var self = this; gunakan self karena fetching dgn promise
+        http.getProducts().then(data => {
+        
+        self.setState({products: data})
+        }, err => {
+        });
+    }
+
+## 131 Wishlist Component
+
+Kita akan membuat kotak Wishlist di sisi kanan product list.
+
+Membuat folder baru wishlist -> /src/wishlist,
+Membuat file baru wishlist.js -> /src/wishlist/wishlist.js
+Membuat file baru wishlist.css -> /src/wishlist/wishlist.css
+
+Update file wishlist.js :
+
+    import React, {Component} from 'react';
+    import './wishlist.css';
+
+    class WishList extends Component {
+        render() {
+            return (
+                <div className="card">
+                    <div className="card-block">
+                        <h4 className="card-title">Wish List</h4>
+                        <ul className="list-group"></ul>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    export default WishList;
+
+Membuat folder baru src/product-condensed
+Membuat file baru src/product-condensed/product-condensed.js
+Membuat file css baru src/product-condesed/product-condensed.css
+
+Update file product-condensed.js :
+
+    import React, {Component} from 'react';
+    import './product-condesed.css';
+
+    class ProductCondesed extends Component {
+        render() {
+            return (
+                <li className="list-group-item">
+                    <a className="btn btn-outline-danger">
+                        {this.props.product.title} | 
+                        ${this.props.product.price}
+                    </a>
+                </li>
+            );
+        }
+    }
+
+    export default ProductCondensed;
+
+Update App.js :
+
+    import WishList from './wishlist/wishlist';
+
+dan update render :
+
+    <div className="col-sm-4">
+        <WishList />
+    </div>
+
+code akhir menjadi seperti dibawah ini :
+
+    render() {
+        return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1 className="App-title">Welcome to The Shop</h1>
+            </header>
+            <div className="container-fluid App-main">
+                <div className="row">
+                    <div className="col-sm-8">
+                        <div className="row">
+                            {this.productList()}
+                        </div>
+                    </div>
+                    <div className="col-sm-4">
+                        <WishList />
+                    </div> 
+                </div>    
+            </div>
+        </div>
+        );
+    }
+
+Coba di browser.
+
+Update file wishlist.js
+
+    import ProductCondesed from './product-condensed/product-condensed';
+
+
 
     
+       

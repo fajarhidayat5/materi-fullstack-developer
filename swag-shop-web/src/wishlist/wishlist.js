@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './wishlist.css';
+import DataService from '../services/data-service';
 
 import ProductCondensed from '../product-condensed/product-condensed';
 
@@ -44,7 +45,7 @@ class WishList extends Component {
           <div className="card">
               <div className="card-block">
                   <h4 className="card-title">Wish List</h4>
-                  <ul className="list-group pull-left">
+                  <ul className="list-group">
                     {this.createWishList()}
                   </ul>
               </div>

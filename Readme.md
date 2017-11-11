@@ -1297,6 +1297,66 @@ Update file wishlist.js
 
     import ProductCondesed from './product-condensed/product-condensed';
 
+continue ....
+
+skip to 133 Build singleton data service and 134 and unfinish bad mood.
+
+## 133 Membangun Singleton Data Service dengan JavaScript.
+
+Untuk membuat notification service, dengan menggunakan **notification observer pattern**.
+
+Gunanya adalah apabila ada perubahan data (data changes) maka akan dikirimkan notifikasi kepada component lain sebagai listener dan melakukan reaksi terhadap perubahan tersebut.
+
+Membuat file baru data-service.js -> /services/data-service.js
+
+Singleton : hanya ada 1 instant dalam memory.
+
+Update file data-service.js sbb :
+
+    let instance = null;
+
+    class DataService {
+		constructor() {
+			if (!instance) {
+				instance = this;
+			}
+
+			return instance;
+    	}
+
+		addWishListItem = item => {
+			wishList.push(item);
+		}
+
+		removeWishListItem = item => {
+			for (var x = 0; x < wishList.length; x++) {
+				if (wisListh[x]._id === item._id) {
+					wishList.splice(x, 1);
+					break;
+				}
+			}
+		}
+	}
+
+    export default DataService;
+
+Update file wishlist.js
+
+Import DataService :
+
+	import DataService from '../services/data-service';
+
+## 134 Membuat Notification Service
+
+
+
+
+
+
+
+
+
+
 
 
     

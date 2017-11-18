@@ -1,0 +1,39 @@
+body {
+  background: #f1f1f1;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  background: #fff !important;
+}
+
+.box {
+  width: 100%;
+  /* height: auto; */
+  min-height: 200px;
+  background-color: #888888;
+}
+
+#lingkaran {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  background-color: #00a9ff;
+  margin: auto;
+  position: relative;
+}
+
+.text-lingkaran {
+  color: yellow;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 0 50px 0 50px;
+}

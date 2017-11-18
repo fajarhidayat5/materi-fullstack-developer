@@ -21,7 +21,7 @@ Code > Preferences > Setting
 
 Instal extention "wiew in browser".
 
-## Start Learning HTML
+### Start Learning HTML
 
 + Buat folder baru, nama: fullstack-dev.
 + Buat folder baru, nama: html
@@ -182,6 +182,162 @@ Selesai, lanjut ke materi berikutnya CSS.
 
 ---
 
+## CSS
+
+**Cascading Style Sheet**
+
+CSS -> menambahkan Atribut pada Element HTML untuk mempercantik tampilan website.
+
+* Buat folder baru css.
+* Buat folder baru css/belajar-css
+* Buat code default HTML.
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <title></title>
+
+        </head>
+        <body>
+            <h1>Belajar CSS</h1>
+            <h2>CSS3</h2>
+            
+
+        </body>
+        </html>
+
+### Inline Style
+
+Menambahka Atribut langsung pada element HTML.
+
+Contoh :
+
+    <h1 style=
+        "color:blue; border: solid 3px blue">Belajar CSS</h1>
+    <h2 style="color:green">CSS3</h2>
+
+Kelemahan Inline Style, bila ingin merubah style harus merubah satu persatu setiap element yang ada pada setiap halaman.
+
+### Internal Style
+
+Menempatkan style code diantara tag head <head>.
+
+Contoh :
+
+    <style>
+        h2 {
+            background: #ccc; 
+        }
+        p {
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 20px;
+            background: #e6f7f4;
+        }
+    </style>
+
+### External CSS
+
+Memepatkan style code di luar halaman, dengan membuat halaman khusus .css.
+
+Buat file baru di root folder "style.css".
+
+Membuat link untuk menghubungkan file css :
+
+    <link rel="stylesheet" href="style.css">
+
+Update style.css dibawah ini :
+
+    body {
+    background: #f1f1f1;
+    }
+
+    p {
+    background: #fff !important;
+    }    
+
+External di rekomendasi oleh sebagian besar developer, karena code akan lebih rapih, mudah di update dan di manage.
+
+### Element
+
+3 Cara menambahkan style pada element :
+
+1. Target langsung ke element.
+
+    pada html :
+
+        <body>
+
+        <p>
+
+    pada css : 
+
+        body {
+            background-color: grey;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            background: #fff !important;
+        }
+
+2. Menambahkan class pada element tsb.
+
+    html :
+
+        <div class="box"></div>
+    
+    css :
+
+        .box {
+            width: 100%;
+            /* height: auto; */
+            min-height: 200px;
+            background-color: #888888;
+            position: relative;
+        }
+
+3. Menambahkan id pada element tsb.
+
+    html :
+
+        <div id="lingkaran">
+            <span class="text-lingkaran">Lingkaran</span>
+        </div>
+
+    css :
+
+        text-lingkaran {
+            color: yellow;
+            position: absolute;
+            top: 50%;
+            left: 40%;
+        }
+
+### CSS Color
+
+Tambahkan class "container" untuk merapihkan halaman.
+
+    html :
+
+    <div class="container">
+        ...
+    </div>
+    
+    css :
+
+    .container {
+        background-color: #ffffff;
+        padding: 0 50px 0 50px;
+    }
+
+
+
+
+
+---
 
 ## JavaScript
 
@@ -1650,7 +1806,6 @@ Error:
 
 =======
 ## 134 Membuat Notification Service
->>>>>>> 5a98256afbac8ea8772b9e9bed6a9262aae74d72
 
 
 

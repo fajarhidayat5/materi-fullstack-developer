@@ -1583,6 +1583,7 @@ Import DataService :
 
 	import DataService from '../services/data-service';
 
+<<<<<<< HEAD
 ## 134 Membuat Notification Sistem
 
 Intinya Component akan "listen" dari windows change, sehingga component akan update dengan sendirinya secara otomatis.
@@ -1647,6 +1648,9 @@ Error:
 
     Warning: Expected `onClick` listener to be a function, instead got a value of `string` type.
 
+=======
+## 134 Membuat Notification Service
+>>>>>>> 5a98256afbac8ea8772b9e9bed6a9262aae74d72
 
 
 

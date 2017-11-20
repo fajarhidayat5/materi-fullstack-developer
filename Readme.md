@@ -318,7 +318,7 @@ External di rekomendasi oleh sebagian besar developer, karena code akan lebih ra
 
 ### CSS Color
 
-Tambahkan class "container" untuk merapihkan halaman.
+Tambahkan class "**container**" untuk merapihkan halaman.
 
     html :
 
@@ -330,8 +330,217 @@ Tambahkan class "container" untuk merapihkan halaman.
 
     .container {
         background-color: #ffffff;
-        padding: 0 50px 0 50px;
+        padding: 0 5px 0 5px;
+        margin: 0 40px 0 40px;
+        border: 1px solid #f4f4f4;
     }
+
+### Gradient Color
+
+Tambahkan warna gradien pada **box** dengan code css sbb :
+
+    .box {
+        ...
+        ...
+        background: linear-gradient();
+    }
+
+Tambahkan warna gradien pada **lingkaran** dengan code css sbb :
+
+    #lingkaran {
+        width: 300px;
+        height: 300px;
+        border-radius: 150px;
+        /* background-color: #00a9ff; */
+        background: linear-gradient(to right, #00a9ff, blue);
+        margin: auto;
+        position: relative;
+    }
+
+### CSS Shadow
+
+Tambahkan pada code css sbb :
+
+    h1 {
+        ...
+        text-shadow: 2px 2px
+    }
+
+Cek di browser
+
+> catata: pixel pertama dari kiri adalah jarak vertical atas ke bawah, pixel kedua adalah jarak horizontal kiri kekanan.
+
+Tambahkan color :
+
+    h1 {
+        ...
+        text-shadow: 2px 2px black;
+    }
+
+Tambahkan aspek blur pada shadow :
+
+    h1 {
+        ...
+        text-shadow: 2px 2px 5px black;
+    }
+
+Silahkan tambahkan sendiri untuk h2.
+
+Tambahkan **box-shadow** untuk container.
+
+    .container {
+        ...
+        ...
+        box-shadow: 3px 5px 15px black;
+    }
+
+### Background dan Borders
+
+#### Background
+
+Tambahkan background image untuk body
+
+    body {
+        ...
+        background-image: url(https://wallpapersite.com/images/pages/pic_w/4780.jpg);
+    }
+
+Silahkan tambahkan sendiri background image untuk box dan lingkaran.
+
+Property lain dari background image adalah :
+
+background-repeat: no-repeat
+
+    Agar image tidak ditampilkan lebih dari 1 image.
+
+background-size: cover
+
+    Agar image size mengikuti dimensi browser.
+
+
+#### Border
+
+Tambahkan image
+
+html :
+
+    <img class="cat" src="https://i.pinimg.com/736x/3b/95/b4/3b95b43ee3ad06b81322226e11f21b9a--most-popular-cat-names-to-find-out.jpg" alt="">
+
+css :
+
+    .cat {
+        max-width: 50%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+Tambahkan border :
+
+    border-bottom: 10px dashed grey;
+
+### Bekerja dengan Chrome Developer Tools
+
+Klik kanan > klik inspect
+
+### CSS Combination
+
+Cara menggunakan selector / target **">"** pada CSS.
+
+Contoh :
+
+html 
+
+    <ul>
+        <li>Saya suka kucing</li>
+        <li>Saya juga suka motor besar</li>
+        <ol>
+          <li>Motor besar cukup mahal harganya</li>
+          <li>Apalagi Harley Dacocan</li>
+        </ol>
+        <li>Jadi saya beli kucing saja</li>
+    </ul>
+
+css
+
+    ul li {
+        color: red;
+        font-size: 18px;
+    }
+
+    ul > li {
+        color: blue;
+        font-size: 22px;
+    }
+
+### CSS Grouping
+
+Contoh :
+
+    h1, h2, h3 {
+        color: #888;
+        text-shadow: 2px 2px 5px black;
+    }
+
+Percobaan: Buat class container baru dan beri css :
+
+    .container, h1, h2, h3 {
+        color: #888;
+        text-shadow: 2px 2px 5px black;
+    }
+
+    <div class="container">
+      <h1>Ini adalah H1</h1>
+      <h2>Ini adalah H2</h2>
+      <h3>Ini adalah H3</h3>
+    </div>
+
+### Font Family
+
+Kita bisa menggunakan lebih dari satu font, contoh:
+
+    html {
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+Gunakan " " atau ' ' untuk nama font yang lebih dari 1 kata.
+Anda bisa gunakan html Tag sebagai top root Tag.
+
+### Anker Element Link
+
+html :
+
+    <a href="#">Click Here</a>
+
+css : 
+
+    a {
+        text-decoration: 
+    }
+
+Cek di inspect element:
+
+Rubah menjadi :
+
+    a {
+        text-decoration: none; 
+        font-size: ...;
+        color: ...;
+        //letter-spacing: 10px;
+        word-spacing: 30px;
+        text-transform: uppercase;
+    }
+
+### Text Formating
+
+* <b> Bold
+* <i> Italic
+* <em> Emphasid
+* <strong> Strong
+* <del> Cross word
+* <mark> highlight
+
+Selesai.
 
 
 

@@ -1,9 +1,16 @@
+html {
+  font-family: 'Times New Roman', Times, serif;
+}
+
 body {
   background: #f1f1f1;
+  background-image: url(https://wallpapersite.com/images/pages/pic_w/4780.jpg);
 }
 
 h1 {
   text-align: center;
+  text-shadow: 2px 2px 5px black;
+  /* margin-top: 0px; */
 }
 
 p {
@@ -14,14 +21,15 @@ p {
   width: 100%;
   /* height: auto; */
   min-height: 200px;
-  background-color: #888888;
+  background: linear-gradient(#888, white);
 }
 
 #lingkaran {
   width: 300px;
   height: 300px;
   border-radius: 150px;
-  background-color: #00a9ff;
+  /* background-color: #00a9ff; */
+  background: linear-gradient(to right, #00a9ff, blue);
   margin: auto;
   position: relative;
 }
@@ -35,5 +43,27 @@ p {
 
 .container {
   background-color: #ffffff;
-  padding: 0 50px 0 50px;
+  /* background-color: transparent; */
+  padding: 0 5px 0 5px;
+  margin: 0 40px 0 40px;
+  border: 1px solid #f4f4f4;
+  box-shadow: 3px 5px 15px black;
+}
+
+.cat {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+  border-bottom: 10px dashed grey;
+}
+
+ul li {
+  color: red;
+  font-size: 18px;
+}
+
+ul > li {
+  color: blue;
+  font-size: 22px;
 }
